@@ -247,10 +247,10 @@
                         Исследуйте огромный мир, сражайтесь с мифическими существами и раскрывайте древние тайны.
                     </p>
                     
-                    <!-- Автоматически ищет файл с названием Ro в корне -->
-                    <img src="Ro" alt="Обложка Mythrea" class="game-cover" onerror="this.style.display='none'; document.getElementById('placeholder').style.display='flex';">
+                    <!-- Ищет файл с названием Ro.jpg -->
+                    <img src="Ro.jpg" alt="Обложка Mythrea" class="game-cover" onerror="this.style.display='none'; document.getElementById('placeholder').style.display='flex';">
                     <div id="placeholder" class="cover-placeholder" style="display: none;">
-                        Файл "Ro" не найден. Загрузите обложку с названием "Ro"
+                        Файл "Ro.jpg" не найден. Загрузите обложку с этим названием
                     </div>
                 </div>
             </section>
@@ -300,19 +300,5 @@
             </div>
         </div>
     </footer>
-
-    <script>
-        // Проверяем наличие файла Ro при загрузке страницы
-        window.addEventListener('load', function() {
-            const img = document.querySelector('.game-cover');
-            const placeholder = document.getElementById('placeholder');
-            
-            // Проверяем, загрузилось ли изображение
-            if (img.naturalWidth === 0) {
-                img.style.display = 'none';
-                placeholder.style.display = 'flex';
-            }
-        });
-    </script>
 </body>
 </html>
