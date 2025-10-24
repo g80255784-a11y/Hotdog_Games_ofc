@@ -82,9 +82,19 @@
             line-height: 1.7;
         }
         
-        .image-placeholder {
+        .game-cover {
             width: 100%;
-            max-width: 800px;
+            max-width: 600px;
+            height: auto;
+            display: block;
+            margin: 30px auto;
+            border: 3px solid #ff6b00;
+            border-radius: 10px;
+        }
+        
+        .cover-placeholder {
+            width: 100%;
+            max-width: 600px;
             height: 400px;
             background: #2a2a2a;
             margin: 30px auto;
@@ -93,6 +103,7 @@
             justify-content: center;
             border: 3px solid #ff6b00;
             font-size: 20px;
+            border-radius: 10px;
         }
         
         .rustore-section {
@@ -236,16 +247,10 @@
                         Исследуйте огромный мир, сражайтесь с мифическими существами и раскрывайте древние тайны.
                     </p>
                     
-                    <div class="image-placeholder">
-                        Обложка игры Mythrea
-                    </div>
-                    
-                    <div class="image-placeholder">
-                        Скриншот геймплея Mythrea
-                    </div>
-                    
-                    <div class="image-placeholder">
-                        Арт персонажей Mythrea
+                    <!-- Автоматически ищет файл с названием Ro в корне -->
+                    <img src="Ro" alt="Обложка Mythrea" class="game-cover" onerror="this.style.display='none'; document.getElementById('placeholder').style.display='flex';">
+                    <div id="placeholder" class="cover-placeholder" style="display: none;">
+                        Файл "Ro" не найден. Загрузите обложку с названием "Ro"
                     </div>
                 </div>
             </section>
@@ -295,5 +300,19 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        // Проверяем наличие файла Ro при загрузке страницы
+        window.addEventListener('load', function() {
+            const img = document.querySelector('.game-cover');
+            const placeholder = document.getElementById('placeholder');
+            
+            // Проверяем, загрузилось ли изображение
+            if (img.naturalWidth === 0) {
+                img.style.display = 'none';
+                placeholder.style.display = 'flex';
+            }
+        });
+    </script>
 </body>
-                      </html>
+</html>
