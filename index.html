@@ -28,6 +28,22 @@
             background: #ff6b00;
             padding: 40px 0;
             text-align: center;
+            position: relative;
+        }
+        
+        .header-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.3;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
         }
         
         .logo {
@@ -104,6 +120,8 @@
             border: 3px solid #ff6b00;
             font-size: 20px;
             border-radius: 10px;
+            flex-direction: column;
+            text-align: center;
         }
         
         .rustore-section {
@@ -206,9 +224,13 @@
 </head>
 <body>
     <header>
+        <!-- Основная картинка сайта -->
+        <img src="pngtree-french-hot-dog-on-white-background-image-png-image_12499125.png" alt="Hotdog Background" class="header-background" onerror="this.style.display='none'">
         <div class="container">
-            <h1 class="logo">Hotdog_Games</h1>
-            <p class="tagline">Разработка игр нового поколения</p>
+            <div class="header-content">
+                <h1 class="logo">Hotdog_Games</h1>
+                <p class="tagline">Разработка игр нового поколения</p>
+            </div>
         </div>
     </header>
 
@@ -247,10 +269,11 @@
                         Исследуйте огромный мир, сражайтесь с мифическими существами и раскрывайте древние тайны.
                     </p>
                     
-                    <!-- Ищет файл с названием Ro.jpg -->
-                    <img src="Ro.jpg" alt="Обложка Mythrea" class="game-cover" onerror="this.style.display='none'; document.getElementById('placeholder').style.display='flex';">
-                    <div id="placeholder" class="cover-placeholder" style="display: none;">
-                        Файл "Ro.jpg" не найден. Загрузите обложку с этим названием
+                    <!-- Обложка игры -->
+                    <img src="Ro.jpg" alt="Обложка Mythrea" class="game-cover" onerror="this.style.display='none'; document.getElementById('game-placeholder').style.display='flex';">
+                    <div id="game-placeholder" class="cover-placeholder" style="display: none;">
+                        Файл "Ro.jpg" не найден<br>
+                        <small>Загрузите обложку игры с этим названием</small>
                     </div>
                 </div>
             </section>
@@ -300,5 +323,25 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        // Проверяем наличие основной картинки сайта
+        window.addEventListener('load', function() {
+            const headerBg = document.querySelector('.header-background');
+            const gameCover = document.querySelector('.game-cover');
+            const gamePlaceholder = document.getElementById('game-placeholder');
+            
+            // Проверяем основную картинку
+            if (headerBg.naturalWidth === 0) {
+                console.log('Основная картинка сайта не найдена');
+            }
+            
+            // Проверяем обложку игры
+            if (gameCover.naturalWidth === 0) {
+                gameCover.style.display = 'none';
+                gamePlaceholder.style.display = 'flex';
+            }
+        });
+    </script>
 </body>
 </html>
